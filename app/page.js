@@ -8,13 +8,13 @@ export default function Home() {
   //Aqui entra o JavaScript normal
 //"" = React; {} = JavaScript
   //letcarrinho = 0
-  let [carrinho, setCarrinho] = useState(0);
-  let [cupom, setCupom] = useState(499.99);
-  let [total, setTotal] = useState();
+  const [carrinho, setCarrinho] = useState(0);
+  const [cupom, setCupom] = useState(499.99);
+  const [total, setTotal] = useState();
 //*let [variavel usada, função modificadora] = function useState(valor a ser declarado);//
 
   function handleCarrinho(){
-    let novoCarrinho = carrinho;
+    const novoCarrinho = carrinho;
       setCarrinho(carrinho + 1)
       novoCarrinho++
   }
@@ -25,7 +25,7 @@ export default function Home() {
 }
 
 function cleanCarrinho(){
-  setCarrinho = 0
+  setCarrinho (carrinho = 0)
 }
 
 function addCupom(){
@@ -55,13 +55,13 @@ function valorTotal(){
             Carrinho: <strong> {carrinho} </strong> itens
         </p>
 
-        <button onClick={()=>cleanCarrinho()} className="bg-yellow-400 text-black mt-5 mb-6 p-3 ml-3">Limpar</button>
+        <button onClick={()=>cleanCarrinho()} className="border-spacing-2 bg-yellow-400 text-black mt-5 mb-6 p-3 ml-3">Limpar</button>
         <button onClick={()=>addCupom()} className="bg-yellow-800 text-black mt-5 mb-6 p-3">Adicionar cupom</button>
     
       <hr/>
 
       <p className="p-3 text-lg">
-            Valor total: R$ <strong> {valorTotal} </strong>
+          Valor total: R$ <strong> {total} </strong>
       </p>
 
       <hr/>
