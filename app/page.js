@@ -10,37 +10,35 @@ export default function Home() {
   //letcarrinho = 0
   const [carrinho, setCarrinho] = useState(0);
   const [cupom, setCupom] = useState(499.99);
-  const [total, setTotal] = useState();
-//*let [variavel usada, função modificadora] = function useState(valor a ser declarado);//
+  const [total, setTotal] = useState(0);
+//let [variavel usada, função modificadora] = function useState(valor a ser declarado);//
 
   function handleCarrinho(){
-    const novoCarrinho = carrinho;
-      setCarrinho(carrinho + 1)
-      novoCarrinho++
+    let novoCarrinho = carrinho;
+    setCarrinho(carrinho + 1)
+    novoCarrinho++
+    setTotal(novoCarrinho * cupom)
   }
 
   function removeCarrinho(){
+    let novoCarrinho = carrinho;
     setCarrinho(carrinho - 1)
     novoCarrinho--
+    setTotal(novoCarrinho * cupom)
 }
 
 function cleanCarrinho(){
-  setCarrinho (carrinho = 0)
+  setCarrinho (0)
 }
 
 function addCupom(){
     setCupom(399.99)
 }
 
-function valorTotal(){
-    setTotal(novoCarrinho * cupom)
-}
-
 //  function handleCarrinho(adicionar){
 //   if(adicionar == true){
 //     setCarrinho(carrinho + 1)
-//   }
-//   else{
+//   }else{
 //     setCarrinho(carrinho - 1)
 //    }
 //  }
@@ -65,7 +63,6 @@ function valorTotal(){
       </p>
 
       <hr/>
-
 
         <h2 className="p-3">Produtos</h2>
           <div className="border bg-sky-700 w-fit p-2 text-center text-white">
