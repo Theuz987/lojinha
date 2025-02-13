@@ -4,6 +4,15 @@ import { useState } from "react";
 function Produtos() {
 
     const[product,setProduct]= useState({});
+    const[products,setProducts] = useState ([{
+        name:"Havaianas",
+        price:45.90,
+        quantity:40
+    },{
+        name:"Sapatênis",
+        price:135.90,
+        quantity:13
+}]);
 
     const[name,setName] = useState("");
     const[price,setPrice] = useState("");
@@ -34,25 +43,24 @@ function Produtos() {
             quantity:quantity,
             date: Date()
         }
-        setProduct(object)
+        setProducts([...products,object]);
     }
 
     return ( 
         <div className="p-10">
             <h1 className="text-lg mb-10">Administração de produtos</h1>
 
-            <div className="flex gap-10">
+            <div className="flex">
 
                 {/* Menu Lateral */}
                 <div>
-                    <button onClick={()=>setDisplay("cadastro")} className="rounded-2xl bg-gray-200 p-4 mb-5 mr-7">Cadastro</button>
+                    <button onClick={()=>setDisplay("cadastro")} className="rounded-2xl bg-gray-200 p-4 mb-5 mr-16">Cadastro</button>
                     <br/>
-                    <button onClick={()=>setDisplay("listagem")} className="rounded-2xl bg-gray-200 p-4 mb-5 mr-7">Listagem</button>
+                    <button onClick={()=>setDisplay("listagem")} className="rounded-2xl bg-gray-200 p-4 mb-5 mr-16">Listagem</button>
                 </div>
 
                 {/* Painel principal */}
-                <div className=" flex justify-start">
-                    
+                <div> 
                     {/* Cadastro */}
                     {
                     register == true &&  
@@ -83,7 +91,8 @@ function Produtos() {
                             </label>
                             <br/>
                             <br/>
-                            <button className="rounded-2xl bg-gray-400 p-4 mt-6 mb-5">Salvar</button>
+
+                            <button className="rounded-2xl bg-gray-400 p-4 my-6">Salvar</button>
                         </form>
                     </div>
                     }
@@ -94,16 +103,15 @@ function Produtos() {
                 {
                     listing == true&&
                     <div className="border-black p-10 rounded-xl border-4">
-                        <h2 className="font-bold mb-5">Listagem de produtos</h2>
-
+                        <h2 className="font-bold mb-10">Listagem de produtos</h2>
                         <ul>
-                            <li>{product.name} - R$ {product.price} - {product.quantity} itens</li>
-                            <br/>
-                            <br/>
-                            <li>Produto 2</li>
-                            <br/>
-                            <br/>
-                            <li>Produto 3</li>
+                            {
+                                products.map((i)=>
+                                    <li>
+                                        {i.name} - R$ {i.price} - {i.quantity} itens
+                                    </li>
+                                )
+                            }
                         </ul>
                     </div>
                 }
